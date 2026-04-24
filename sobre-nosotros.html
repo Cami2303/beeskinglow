@@ -47,15 +47,14 @@
       100% { background-position: 200% center; }
   }
 
-  /* --- ARREGLO ESPECÍFICO PARA TELÉFONOS (Móvil) --- */
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
       .hero-3 {
           padding-top: 0;
-          background: #fff; /* O el color que prefieras para el fondo móvil */
+          background: var(--cream); 
       }
       
       .company-name {
-          position: relative; /* Lo sacamos de encima de la imagen para que no tape */
+          position: relative; 
           top: 0;
           left: 0;
           text-align: center;
