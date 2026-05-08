@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mercado — BeeSkin Glow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    /* ── COMPETITION TABLE ── */
+    .comp-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 28px 80px;
+    }
+
+    .comp-scroll {
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--glass-border);
+    }
+
+    .comp-table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      background: rgba(253,250,244,0.9);
+    }
+
+    /* Header row */
+    .comp-table thead tr {
+      background: var(--charcoal);
+    }
+    .comp-table thead th {
+      padding: 16px 18px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border-right: 1px solid rgba(200,168,75,0.15);
+      white-space: nowrap;
+    }
+    .comp-table thead th:last-child { border-right: none; }
+
+    /* Column labels */
+    .comp-table thead th.col-beeskin {
+      background: linear-gradient(135deg, var(--gold-dark), var(--amber));
+      color: var(--charcoal);
+    }
+
+    /* Body rows */
+    .comp-table tbody tr {
+      border-bottom: 1px solid var(--glass-border);
+      transition: background var(--transition);
+    }
+    .comp-table tbody tr:last-child { border-bottom: none; }
+    .comp-table tbody tr:hover { background: rgba(200,168,75,0.06); }
+
+    /* Row label cell */
+    .comp-table tbody td.row-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--amber);
+      background: rgba(200,168,75,0.07);
+      border-right: 1px solid var(--glass-border);
+      padding: 18px 16px;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    .comp-table tbody td {
+      padding: 16px 18px;
+      vertical-align: top;
+      color: rgba(26,16,8,0.72);
+      line-height: 1.65;
+      border-right: 1px solid var(--glass-border);
+    }
+    .comp-table tbody td:last-child { border-right: none; }
+
+    /* Highlight BeeSkin column */
+    .comp-table tbody td.col-beeskin {
+      background: rgba(200,168,75,0.06);
+    }
+
+    /* Strengths / weaknesses chips */
+    .tag-list { display: flex; flex-direction: column; gap: 5px; }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .tag-strength {
+      background: rgba(46,204,113,0.1);
+      color: #1a7a42;
+      border: 1px solid rgba(46,204,113,0.2);
+    }
+    .tag-weakness {
+      background: rgba(231,76,60,0.08);
+      color: #9b2c2c;
+      border: 1px solid rgba(231,76,60,0.15);
+    }
+
+    /* Price badge */
+    .price-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--charcoal);
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* Section heading inside page */
+    .section-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 520px) {
+      .inner-content { padding: 56px 16px 60px; }
+      .comp-section   { padding: 0 12px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bee-container" id="bee" style="transform:translate(200px,200px)">
+    <svg class="bee-svg" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="18" cy="12" rx="14" ry="7" fill="rgba(255,255,255,0.55)" stroke="#c8a84b" stroke-width="0.8"/>
+      <ellipse cx="18" cy="26" rx="11" ry="5.5" fill="rgba(255,255,255,0.42)" stroke="#c8a84b" stroke-width="0.8"/>
+      <ellipse cx="36" cy="20" rx="16" ry="9" fill="#1a1008"/>
+      <rect x="28" y="12" width="5" height="16" rx="2.5" fill="#d4a017" opacity="0.9"/>
+      <rect x="35" y="12" width="5" height="16" rx="2.5" fill="#d4a017" opacity="0.9"/>
+      <circle cx="51" cy="20" r="7" fill="#1a1008"/>
+      <circle cx="53" cy="18" r="1.8" fill="#d4a017"/>
+      <path d="M20 20 L14 20" stroke="#1a1008" stroke-width="2" stroke-linecap="round"/>
+      <path d="M49 14 Q52 8 56 6" stroke="#1a1008" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      <circle cx="56" cy="6" r="1.5" fill="#d4a017"/>
+    </svg>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="logo.png" alt="BeeSkin Glow" onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='block'"/>
+        <div class="logo-fallback" id="logo-fb" style="display:none"><em>Bee</em>Skin Glow<span>GLOW</span></div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="index.html">Inicio</a>
+      <a href="producto.html">Producto</a>
+      <a href="sobre-nosotros.html">Sobre Nosotros</a>
+      <a href="valores.html">Valores</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="definicion-negocio.html">Definición del Negocio</a>
+      <a href="mercado.html">Mercado</a>
+      <a href="dofa.html">DOFA</a>
+      <a href="costos.html">Costos</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+    </nav>
+  </header>
+
+  <div class="inner-page">
+
+    <!-- ══ EL MERCADO ══ -->
+    <div class="inner-content">
+      <h1 class="reveal">El Mercado</h1>
+      <div class="gold-line reveal" style="transition-delay:.08s"></div>
+
+      <p class="reveal" style="transition-delay:.13s">El producto BeeSkin Glow es una crema sólida a base de cera de abeja, diseñada para el cuidado de la piel. En cuanto a sus características físicas, se presenta en un formato compacto, fácil de transportar y aplicar en diferentes zonas del cuerpo. Desde el punto de vista técnico, está elaborada con ingredientes naturales como cera de abeja, aceites vegetales, aloe vera y vitamina E, los cuales aportan beneficios como hidratación, nutrición y protección. En lo intangible, el producto refleja valores como el bienestar, la confianza, el cuidado personal y el respeto por el medio ambiente, lo que influye en la forma en que los consumidores lo perciben.</p>
+
+      <p class="reveal" style="transition-delay:.17s">Este producto surge como respuesta a la necesidad de cuidar la piel con alternativas más naturales, ya que muchas personas buscan evitar el uso de químicos fuertes. Su principal finalidad es mantener la piel en buen estado, ayudando a conservar su suavidad y protección, al mismo tiempo que simplifica la rutina diaria al ser un producto multifuncional.</p>
+
+      <p class="reveal" style="transition-delay:.21s">En cuanto a sus usos, puede aplicarse en el rostro, labios, manos y otras zonas que requieran hidratación; funciona como un producto versátil que protege la piel y mejora su apariencia, lo que representa una ventaja importante frente a otros productos que cumplen funciones más específicas.</p>
+
+      <p class="reveal" style="transition-delay:.25s">Frente a la competencia, BeeSkin Glow se destaca por su composición natural, su practicidad y su precio accesible. Aunque existen productos sustitutos como cremas tradicionales o aceites, y complementarios como protectores solares, este producto logra diferenciarse por ofrecer varios beneficios en uno solo.</p>
+
+      <p class="reveal" style="transition-delay:.29s">Por otra parte, en el mercado se han identificado debilidades en algunos competidores, como precios elevados o menor enfoque en lo natural. Esto representa una oportunidad, ya que BeeSkin Glow puede posicionarse como una opción más accesible y alineada con las tendencias actuales. La empresa tiene la capacidad de aprovechar estas ventajas, aunque debe fortalecer su reconocimiento frente a marcas más conocidas.</p>
+
+      <p class="reveal" style="transition-delay:.33s">Finalmente, el producto se debe posicionar como una opción confiable, natural y efectiva para el cuidado de la piel. Se debe lograr que los consumidores lo perciban como un producto de calidad, que aporta bienestar y que además es responsable con el medio ambiente. De igual forma, se debe generar una conexión positiva con el cliente, de manera que no solo satisfaga sus necesidades, sino que también cree confianza y preferencia hacia la marca a largo plazo.</p>
+
+      <!-- ══ EL CONSUMIDOR ══ -->
+      <h2 class="section-h2 reveal" style="margin-top:52px; transition-delay:.10s">El Consumidor</h2>
+      <div class="gold-line reveal" style="transition-delay:.13s"></div>
+
+      <p class="reveal" style="transition-delay:.17s">El producto lo van a comprar principalmente personas que quieran cuidar su piel de forma sencilla, sin tener que usar muchos productos diferentes. Pueden ser jóvenes y adultos que buscan algo práctico para el día a día, ya sea para el rostro, labios o manos.</p>
+
+      <p class="reveal" style="transition-delay:.21s">La necesidad que satisface es la de tener un solo producto que ayude a hidratar, proteger y cuidar la piel en varias zonas, evitando gastar tiempo y dinero en varias cremas. También responde a la necesidad de usar algo más cómodo de llevar y fácil de aplicar.</p>
+
+      <p class="reveal" style="transition-delay:.25s">Los compradores preferirían este producto frente a otros porque les ofrece varias funciones en uno solo, lo que lo hace más práctico. Además, el formato sólido y su facilidad de uso pueden resultar más cómodos que las cremas tradicionales.</p>
+
+      <p class="reveal" style="transition-delay:.29s">En común, los consumidores suelen ser personas que buscan practicidad, que no quieren complicarse con muchos productos y que prefieren opciones funcionales para su rutina diaria. También suelen fijarse en que el producto realmente cumpla lo que promete.</p>
+
+      <p class="reveal" style="transition-delay:.33s">La localización inicial será en el Eje Cafetero, específicamente en Pereira, en el centro de la ciudad cerca de la Plaza de Bolívar, sobre la carrera 8 entre calles 19 y 21, con proyección de expansión a otras ciudades más adelante.</p>
+
+      <p class="reveal" style="transition-delay:.37s">Las variables que más influyen en la decisión de compra son el precio, la utilidad del producto, la calidad, la confianza que genere la marca y las recomendaciones de otras personas o lo que vean en redes sociales.</p>
+    </div>
+
+    <!-- ══ LA COMPETENCIA ══ -->
+    <div class="comp-section">
+      <h2 class="section-h2 reveal">La Competencia</h2>
+      <div class="gold-line reveal" style="transition-delay:.08s"></div>
+      <p class="reveal" style="transition-delay:.12s; font-size:15px; color:rgba(26,16,8,0.62); line-height:1.75; margin-bottom:28px;">Comparativo con tres empresas del sector cosmético.</p>
+
+      <div class="comp-scroll reveal" style="transition-delay:.16s">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th style="width:130px">Criterio</th>
+              <th>Competidor directo #1<br><span style="font-weight:400;font-size:11px;letter-spacing:0;text-transform:none;color:rgba(200,168,75,0.7)">NIVEA Facial 5 en 1</span></th>
+              <th>Competidor directo #2<br><span style="font-weight:400;font-size:11px;letter-spacing:0;text-transform:none;color:rgba(200,168,75,0.7)">POND'S Crema S Humectante</span></th>
+              <th class="col-beeskin">Nuestra Empresa<br><span style="font-weight:400;font-size:11px;letter-spacing:0;text-transform:none;color:rgba(26,16,8,0.6)">BeeSkin Glow</span></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- Descripción -->
+            <tr>
+              <td class="row-label">Descripción</td>
+              <td>
+                Crema facial multifuncional 5 en 1. Nutre intensamente con 24h de hidratación. Rápida absorción sin sensación grasosa. Prepara la piel antes del maquillaje. Formato crema en tarro de 100 ml. Marca alemana con amplia distribución.
+              </td>
+              <td>
+                Crema facial humectante y nutritiva. Fórmula para piel suave y tersa. Hidratación profunda por hasta 48 horas. Desarrollada por el Pond's Institute. Formato crema en tarro de 50 g. Presencia histórica en el mercado latinoamericano.
+              </td>
+              <td class="col-beeskin">
+                Crema sólida todo en uno: rostro, ojos, labios y manos. Ingrediente principal: cera de abeja natural. Complementada con aceite de almendras, coco, aloe vera, vitamina E y aceites esenciales. Producto cosmético natural y artesanal. Formato compacto, práctico y fácil de transportar. Elaborado en el Eje Cafetero, Colombia.
+              </td>
+            </tr>
+
+            <!-- Precios -->
+            <tr>
+              <td class="row-label">Precios</td>
+              <td><span class="price-badge">$17.920 – $25.600</span></td>
+              <td><span class="price-badge">$9.975 – $19.150</span></td>
+              <td class="col-beeskin"><span class="price-badge">$29.800</span></td>
+            </tr>
+
+            <!-- Fortalezas -->
+            <tr>
+              <td class="row-label">Fortalezas</td>
+              <td>
+                <div class="tag-list">
+                  <span class="tag tag-strength">Marca global reconocida y de confianza</span>
+                  <span class="tag tag-strength">Amplia distribución: supermercados, farmacias y e-commerce</span>
+                  <span class="tag tag-strength">Alta inversión en publicidad y posicionamiento</span>
+                  <span class="tag tag-strength">Multifuncionalidad (5 en 1) como propuesta de valor</span>
+                  <span class="tag tag-strength">Alta calificación de usuarios (4.5★)</span>
+                </div>
+              </td>
+              <td>
+                <div class="tag-list">
+                  <span class="tag tag-strength">Marca tradicional con décadas de presencia en Colombia</span>
+                  <span class="tag tag-strength">Precio accesible y competitivo</span>
+                  <span class="tag tag-strength">Alta disponibilidad en tiendas y droguerías</span>
+                  <span class="tag tag-strength">Reconocida eficacia hidratante (4.4★)</span>
+                  <span class="tag tag-strength">Respaldo de un instituto de investigación cosmética</span>
+                </div>
+              </td>
+              <td class="col-beeskin">
+                <div class="tag-list">
+                  <span class="tag tag-strength">Producto 100% natural con ingredientes de origen apícola y vegetal</span>
+                  <span class="tag tag-strength">Versatilidad: una sola crema reemplaza varios productos</span>
+                  <span class="tag tag-strength">Propuesta diferenciada y única en el segmento natural local</span>
+                  <span class="tag tag-strength">Alineada con la tendencia de consumo ecológico y sostenible</span>
+                  <span class="tag tag-strength">Precio competitivo considerando la calidad natural del producto</span>
+                  <span class="tag tag-strength">Producción local, apoyo a la economía regional</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Debilidades -->
+            <tr>
+              <td class="row-label">Debilidades</td>
+              <td>
+                <div class="tag-list">
+                  <span class="tag tag-weakness">Usa ingredientes sintéticos y conservantes químicos</span>
+                  <span class="tag tag-weakness">No es apta para consumidores que buscan productos 100% naturales</span>
+                  <span class="tag tag-weakness">Packaging plástico, no sostenible</span>
+                  <span class="tag tag-weakness">No tiene enfoque ecológico ni apícola</span>
+                  <span class="tag tag-weakness">Precio más elevado que opciones naturales artesanales</span>
+                </div>
+              </td>
+              <td>
+                <div class="tag-list">
+                  <span class="tag tag-weakness">Formulación convencional con ingredientes sintéticos</span>
+                  <span class="tag tag-weakness">No se dirige al segmento natural/ecológico</span>
+                  <span class="tag tag-weakness">Imagen de marca envejecida frente a tendencias actuales</span>
+                  <span class="tag tag-weakness">No comunica beneficios adicionales más allá de la hidratación</span>
+                  <span class="tag tag-weakness">Packaging no sostenible</span>
+                </div>
+              </td>
+              <td class="col-beeskin">
+                <div class="tag-list">
+                  <span class="tag tag-weakness">Marca nueva sin reconocimiento en el mercado</span>
+                  <span class="tag tag-weakness">Capital limitado para inversión inicial</span>
+                  <span class="tag tag-weakness">Producción artesanal de pequeña escala</span>
+                  <span class="tag tag-weakness">Sin infraestructura propia amplia para producción masiva</span>
+                  <span class="tag tag-weakness">Menor presencia en canales de distribución tradicionales</span>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /inner-page -->
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand-logo">
+          <img src="logo.png" alt="BeeSkin Glow" onerror="this.style.display='none'; document.getElementById('f-fb').style.display='block'"/>
+          <div class="logo-fallback" id="f-fb" style="display:none;font-size:1.4rem"><em>Bee</em>Skin<span style="font-size:.5rem;letter-spacing:5px;color:var(--gold)">GLOW</span></div>
+        </div>
+        <div class="footer-social"><a href="#">📸</a><a href="#">📘</a><a href="#">🎵</a><a href="#">💬</a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <a href="sobre-nosotros.html">Sobre Nosotros</a>
+        <a href="valores.html">Valores Corporativos</a>
+        <a href="equipo.html">Equipo BeeSkin</a>
+        <a href="definicion-negocio.html">Definición del Negocio</a>
+        <a href="mercado.html">Mercado</a>
+        <a href="dofa.html">DOFA</a>
+        <a href="costos.html">Costos</a>
+      </div>
+      <div class="footer-col"><h4>Legal</h4><a href="privacidad.html">Política de Privacidad</a><a href="terminos.html">Términos y Condiciones</a></div>
+      <div class="footer-col"><h4>Contacto</h4><a href="mailto:hola@beeskinglow.com">hola@beeskinglow.com</a><a href="tel:+573000000000">+57 300 000 0000</a><span>Colombia 🇨🇴</span></div>
+    </div>
+    <div class="footer-bottom">© 2026 BeeSkin Glow. Todos los derechos reservados.</div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
