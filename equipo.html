@@ -88,14 +88,13 @@
 
     /* ── ORGANIGRAMA ── */
     .org-section {
-      max-width: 860px; margin: 56px auto 0; padding: 0 28px 80px;
+      max-width: 980px; margin: 56px auto 0; padding: 0 28px 80px;
     }
     .org-section h2 {
       font-family: var(--font-display);
       font-size: clamp(1.6rem,3.5vw,2.2rem);
       color: var(--charcoal); margin-bottom: 6px;
     }
-
     .org-frame {
       margin-top: 28px;
       background: rgba(234,224,206,0.45);
@@ -103,94 +102,25 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
     }
-
-    /* Visual organigrama built in HTML/CSS */
-    .org-chart {
-      padding: 40px 24px 48px;
-      overflow-x: auto;
+    .org-svg-wrap {
+      width: 100%; overflow-x: auto;
+      padding: 32px 16px 16px;
     }
-
-    .org-level { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; }
-    .org-level + .org-level { margin-top: 32px; }
-
-    .org-box {
-      background: linear-gradient(135deg, rgba(200,168,75,0.18), rgba(200,168,75,0.06));
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      text-align: center;
-      min-width: 130px; max-width: 160px;
-      position: relative;
-      transition: box-shadow var(--transition), transform var(--transition);
+    .org-svg-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+    .org-legend {
+      display: flex; flex-wrap: wrap; gap: 18px;
+      justify-content: center;
+      padding: 12px 24px 24px;
+      font-size: 12px; color: rgba(26,16,8,0.5);
     }
-    .org-box:hover { box-shadow: var(--shadow-gold); transform: translateY(-2px); }
-    .org-box.top {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      border-color: var(--gold-dark);
-    }
-    .org-box.top .ob-title { color: var(--charcoal); }
-    .org-box.top .ob-name  { color: rgba(26,16,8,0.75); }
-
-    .ob-title { font-size: 11px; font-weight: 700; color: var(--amber); letter-spacing:.5px; text-transform:uppercase; margin-bottom:4px; }
-    .ob-name  { font-family: var(--font-display); font-size: 1rem; color: var(--charcoal); font-weight:600; line-height:1.2; }
-
-    /* Connector lines via CSS */
-    .org-connector {
-      display: flex; justify-content: center;
-      margin: 0;
-    }
-    .org-connector::before {
-      content: '';
-      display: block;
-      width: 1px; height: 28px;
-      background: var(--gold);
-      opacity: 0.4;
-    }
-
-    .org-h-line {
-      position: relative;
-      display: flex; justify-content: center; align-items: flex-start;
-      gap: 16px; flex-wrap: wrap;
-    }
-    .org-h-line::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 10%; right: 10%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
-      opacity: 0.35;
-    }
-
-    .org-note {
-      text-align: center;
-      font-size: 12px; color: rgba(26,16,8,0.35);
-      margin-top: 28px;
-      font-style: italic;
-    }
-
-    /* Placeholder image area */
-    .org-img-placeholder {
-      width: 100%;
-      min-height: 260px;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 12px;
-      background: linear-gradient(135deg, #f2e8d5, #e8d4a8);
-      color: rgba(26,16,8,0.3);
-      font-size: 13px; letter-spacing:2px; text-transform: uppercase;
-    }
-    .org-img-placeholder span { font-size: 48px; opacity:.4; }
-
-    /* Reemplaza la imagen cuando la cargues */
-    .org-real-img {
-      width: 100%;
-      display: none; /* Cambia a block cuando pongas organigrama.png */
-    }
+    .org-legend-item { display: flex; align-items: center; gap: 8px; }
+    .leg-solid  { width:32px; height:2px; background:#9a7d30; flex-shrink:0; }
+    .leg-dashed { width:32px; height:2px; flex-shrink:0;
+      background: repeating-linear-gradient(90deg,#9a7d30 0,#9a7d30 5px,transparent 5px,transparent 10px); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .profiles-grid { grid-template-columns: 1fr; }
-      .org-box { min-width: 100px; max-width: 130px; padding: 10px 10px; }
-      .ob-name { font-size: .85rem; }
     }
   </style>
 </head>
@@ -224,10 +154,11 @@
       <a href="producto.html">Producto</a>
       <a href="sobre-nosotros.html">Sobre Nosotros</a>
       <a href="valores.html">Valores</a>
-      <a href="equipo.html">Equipo Beeskin</a>
+      <a href="equipo.html">Equipo</a>
       <a href="dofa.html">DOFA</a>
       <a href="costos.html">Costos</a>
-
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
     </nav>
   </header>
 
@@ -237,7 +168,7 @@
     <div class="page-intro">
       <h1 class="reveal">Equipo <em style="color:var(--gold-dark);font-style:italic">BeeSkin</em></h1>
       <div class="gold-line reveal" style="transition-delay:.08s"></div>
-      <p class="reveal" style="transition-delay:.12s">Conoce a nuestro equipo.</p>
+      <p class="reveal" style="transition-delay:.12s">Conoce a las personas detrás de cada producto. Un equipo comprometido con la calidad, la naturaleza y el bienestar de nuestros clientes.</p>
     </div>
 
     <!-- PERFILES -->
@@ -302,7 +233,16 @@
         <div class="profile-funcs"><strong>Funciones</strong>Preparar formulaciones, manejar equipos de producción y seguir protocolos para la elaboración segura de productos.</div>
       </div>
 
-
+      <!-- Auxiliar de Producción -->
+      <div class="profile-card reveal" style="transition-delay:.30s">
+        <div class="profile-badge">🧴 Producción</div>
+        <h3>Auxiliar de Producción</h3>
+        <div class="profile-row"><span class="pr-label">Estudios</span><span>Tecnología Química</span></div>
+        <div class="profile-row"><span class="pr-label">Experiencia</span><span>1 año</span></div>
+        <div class="profile-row"><span class="pr-label">Edad</span><span>21 años</span></div>
+        <div class="profile-divider"></div>
+        <div class="profile-funcs"><strong>Funciones</strong>Apoyar la preparación de materiales, envasado y etiquetado, y mantener organizada el área de producción.</div>
+      </div>
 
       <!-- Técnico de Control de Calidad -->
       <div class="profile-card reveal" style="transition-delay:.34s">
@@ -315,6 +255,16 @@
         <div class="profile-funcs"><strong>Funciones</strong>Verificar calidad de materias primas y productos, realizar pruebas de control y registrar resultados.</div>
       </div>
 
+      <!-- Community Manager -->
+      <div class="profile-card reveal" style="transition-delay:.38s">
+        <div class="profile-badge">📱 Marketing</div>
+        <h3>Community Manager</h3>
+        <div class="profile-row"><span class="pr-label">Estudios</span><span>Marketing Digital</span></div>
+        <div class="profile-row"><span class="pr-label">Experiencia</span><span>1 año</span></div>
+        <div class="profile-row"><span class="pr-label">Edad</span><span>22 años</span></div>
+        <div class="profile-divider"></div>
+        <div class="profile-funcs"><strong>Funciones</strong>Crear contenido, administrar redes sociales e interactuar con seguidores para fortalecer la marca.</div>
+      </div>
 
       <!-- Asesor de Ventas -->
       <div class="profile-card reveal" style="transition-delay:.42s">
@@ -346,75 +296,238 @@
       <div class="gold-line reveal" style="transition-delay:.06s"></div>
 
       <div class="org-frame reveal" style="transition-delay:.12s">
+        <div class="org-svg-wrap">
+          <!--
+            Coordenadas del SVG (viewBox 0 0 900 540):
+            Nivel 1 (y=40):  Dir.General cx=450
+            Nivel 2 (y=160): Dir.Producción cx=200 | Dir.Comercial cx=450 | Dir.General→Admin cx=700
+            Nivel 3 (y=290): Compras cx=80 | AreaProd cx=200 | AreaCalidad cx=320 | AreaMkt cx=540 | AreaAdmin cx=700
+            Nivel 4 (y=420): Enc.Compras cx=80 | Operario cx=200 | TecCalidad cx=320 | AsesorVentas cx=540 | Contador cx=700
+            Doble rol punteado: Dir.Producción→TecCalidad | Dir.Comercial→AsesorVentas | Dir.General→Contador(admin)
+          -->
+          <svg viewBox="0 0 920 600" xmlns="http://www.w3.org/2000/svg"
+               font-family="Montserrat, sans-serif" font-size="11">
 
-        <!-- Imagen real: cuando tengas el archivo, pon organigrama.png en la carpeta
-             y cambia display:none a display:block en el <img> de abajo.
-             Cuando la imagen esté visible, el bloque .org-chart se oculta. -->
-        <img src="organigrama1.png" alt="Organigrama BeeSkin Glow"
-             class="org-real-img" id="org-img"
-             onload="this.style.display='block'; document.getElementById('org-built').style.display='none'"
-             onerror="this.style.display='block   '"/>
+            <defs>
+              <!-- Box fill gradients -->
+              <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#C8A84B"/>
+                <stop offset="100%" stop-color="#9A7D30"/>
+              </linearGradient>
+              <linearGradient id="gDir" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f5e6c8"/>
+                <stop offset="100%" stop-color="#e8d090"/>
+              </linearGradient>
+              <linearGradient id="gArea" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ddeedd"/>
+                <stop offset="100%" stop-color="#c4d8c4"/>
+              </linearGradient>
+              <linearGradient id="gOp" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f5e6c8"/>
+                <stop offset="100%" stop-color="#edd898"/>
+              </linearGradient>
+              <!-- Drop shadow -->
+              <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+                <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a1008" flood-opacity="0.12"/>
+              </filter>
+            </defs>
 
-        <!-- Organigrama HTML/CSS como placeholder visual -->
-        <div class="org-chart" id="org-built">
+            <!-- ══════════════════════════════════
+                 SOLID CONNECTOR LINES
+            ══════════════════════════════════ -->
+            <!-- Root → level2 trunk -->
+            <line x1="460" y1="102" x2="460" y2="130" stroke="#9a7d30" stroke-width="1.5"/>
+            <!-- Horizontal bar level2 -->
+            <line x1="200" y1="130" x2="700" y2="130" stroke="#9a7d30" stroke-width="1.5"/>
+            <!-- Level2 drops -->
+            <line x1="200" y1="130" x2="200" y2="152" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="460" y1="130" x2="460" y2="152" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="700" y1="130" x2="700" y2="152" stroke="#9a7d30" stroke-width="1.5"/>
 
-          <!-- Nivel 1: Directora General -->
-          <div class="org-level">
-            <div class="org-box top">
-              <div class="ob-title">Dirección</div>
-              <div class="ob-name">Directora General</div>
-            </div>
+            <!-- Dir.Produccion → area bar -->
+            <line x1="200" y1="210" x2="200" y2="235" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="80"  y1="235" x2="320" y2="235" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="80"  y1="235" x2="80"  y2="258" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="200" y1="235" x2="200" y2="258" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="320" y1="235" x2="320" y2="258" stroke="#9a7d30" stroke-width="1.5"/>
+
+            <!-- Area drops → operativos -->
+            <line x1="80"  y1="318" x2="80"  y2="342" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="200" y1="318" x2="200" y2="342" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="320" y1="318" x2="320" y2="342" stroke="#9a7d30" stroke-width="1.5"/>
+
+            <!-- Dir.Comercial → area mkt bar -->
+            <line x1="460" y1="210" x2="460" y2="235" stroke="#9a7d30" stroke-width="1.5"/>
+            <line x1="460" y1="235" x2="460" y2="258" stroke="#9a7d30" stroke-width="1.5"/>
+            <!-- Area Mkt → Asesor de Ventas -->
+            <line x1="460" y1="318" x2="460" y2="342" stroke="#9a7d30" stroke-width="1.5"/>
+
+            <!-- Dir.General (admin) → Area Admin -->
+            <line x1="700" y1="210" x2="700" y2="258" stroke="#9a7d30" stroke-width="1.5"/>
+            <!-- Area Admin → Contador -->
+            <line x1="700" y1="318" x2="700" y2="342" stroke="#9a7d30" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+            <!-- ══════════════════════════════════
+                 DASHED DUAL-ROLE LINES
+                 Dir.Produccion → TecCalidad (double role)
+                 Dir.Comercial  → AsesorVentas (double role)
+            ══════════════════════════════════ -->
+            <!-- Dir.Produccion (200,210) curved right → TecCalidad box (320,342) -->
+            <path d="M260,182 C340,182 340,342 380,378"
+                  fill="none" stroke="#9a7d30" stroke-width="1.5"
+                  stroke-dasharray="5,4" opacity="0.7"/>
+            <!-- Dir.Comercial (460,210) curved right → AsesorVentas (460,342) already solid above; 
+                 add a second label line from Dir.Comercial label area -->
+            <!-- Actually Dir.Comercial double-role arrow: from Dir.Comercial box right side → AsesorVentas -->
+            <path d="M560,182 C620,182 620,390 520,390"
+                  fill="none" stroke="#9a7d30" stroke-width="1.5"
+                  stroke-dasharray="5,4" opacity="0.7"/>
+
+            <!-- Double role labels -->
+            <text x="360" y="272" fill="#8b5e1a" font-size="9" font-style="italic" opacity="0.75">doble rol</text>
+            <text x="608" y="296" fill="#8b5e1a" font-size="9" font-style="italic" opacity="0.75">doble rol</text>
+            <!-- Dashed label for Contador -->
+            <text x="715" y="336" fill="#8b5e1a" font-size="9" font-style="italic" opacity="0.75">por fechas</text>
+
+            <!-- ══════════════════════════════════
+                 LEVEL 1 — Directora General
+            ══════════════════════════════════ -->
+            <g filter="url(#shadow)" transform="translate(350,28)">
+              <rect width="220" height="74" rx="10" fill="url(#gTop)"/>
+              <text x="110" y="22" text-anchor="middle" fill="#3a2000" font-size="10" font-weight="700" letter-spacing="1">DIRECCIÓN GENERAL</text>
+              <text x="110" y="44" text-anchor="middle" fill="#1a1008" font-size="13" font-weight="700" font-family="Cormorant Garamond,serif">Directora General</text>
+              <text x="110" y="62" text-anchor="middle" fill="rgba(26,16,8,0.6)" font-size="10">Administración de Empresas</text>
+            </g>
+
+            <!-- ══════════════════════════════════
+                 LEVEL 2 — Tres Directoras
+            ══════════════════════════════════ -->
+            <!-- Directora de Producción -->
+            <g filter="url(#shadow)" transform="translate(90,152)">
+              <rect width="220" height="58" rx="10" fill="url(#gDir)"/>
+              <text x="110" y="18" text-anchor="middle" fill="#8b5e1a" font-size="9" font-weight="700" letter-spacing="1">PRODUCCIÓN</text>
+              <text x="110" y="36" text-anchor="middle" fill="#1a1008" font-size="12" font-weight="700" font-family="Cormorant Garamond,serif">Directora de Producción</text>
+              <text x="110" y="51" text-anchor="middle" fill="rgba(26,16,8,0.55)" font-size="9">Ing. Química</text>
+            </g>
+
+            <!-- Directora Comercial -->
+            <g filter="url(#shadow)" transform="translate(350,152)">
+              <rect width="220" height="58" rx="10" fill="url(#gDir)"/>
+              <text x="110" y="18" text-anchor="middle" fill="#8b5e1a" font-size="9" font-weight="700" letter-spacing="1">COMERCIAL</text>
+              <text x="110" y="36" text-anchor="middle" fill="#1a1008" font-size="12" font-weight="700" font-family="Cormorant Garamond,serif">Directora Comercial</text>
+              <text x="110" y="51" text-anchor="middle" fill="rgba(26,16,8,0.55)" font-size="9">Mercadeo y Neg. Internacionales</text>
+            </g>
+
+            <!-- Dir. General / Área Admin & Financiera -->
+            <g filter="url(#shadow)" transform="translate(590,152)">
+              <rect width="220" height="58" rx="10" fill="url(#gDir)"/>
+              <text x="110" y="18" text-anchor="middle" fill="#8b5e1a" font-size="9" font-weight="700" letter-spacing="1">ADMIN. Y FINANCIERA</text>
+              <text x="110" y="36" text-anchor="middle" fill="#1a1008" font-size="12" font-weight="700" font-family="Cormorant Garamond,serif">Área Administrativa</text>
+              <text x="110" y="51" text-anchor="middle" fill="rgba(26,16,8,0.55)" font-size="9">a cargo: Directora General</text>
+            </g>
+
+            <!-- ══════════════════════════════════
+                 LEVEL 3 — Áreas
+            ══════════════════════════════════ -->
+            <!-- Área Compras y Proveedores -->
+            <g filter="url(#shadow)" transform="translate(20,258)">
+              <rect width="120" height="60" rx="8" fill="url(#gArea)"/>
+              <text x="60" y="18" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">COMPRAS Y</text>
+              <text x="60" y="30" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">PROVEEDORES</text>
+              <text x="60" y="50" text-anchor="middle" fill="rgba(26,16,8,0.55)" font-size="9">Área</text>
+            </g>
+
+            <!-- Área de Producción -->
+            <g filter="url(#shadow)" transform="translate(150,258)">
+              <rect width="100" height="60" rx="8" fill="url(#gArea)"/>
+              <text x="50" y="20" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">ÁREA DE</text>
+              <text x="50" y="32" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">PRODUCCIÓN</text>
+              <text x="50" y="50" text-anchor="middle" fill="rgba(26,16,8,0.55)" font-size="9">Área</text>
+            </g>
+
+            <!-- Área Control de Calidad -->
+            <g filter="url(#shadow)" transform="translate(265,258)">
+              <rect width="120" height="60" rx="8" fill="url(#gArea)"/>
+              <text x="60" y="18" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">CONTROL DE</text>
+              <text x="60" y="30" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">CALIDAD</text>
+              <text x="60" y="50" text-anchor="middle" fill="rgba(26,16,8,0.55)" font-size="9">Área</text>
+            </g>
+
+            <!-- Área Marketing y Ventas -->
+            <g filter="url(#shadow)" transform="translate(400,258)">
+              <rect width="120" height="60" rx="8" fill="url(#gArea)"/>
+              <text x="60" y="18" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">MARKETING</text>
+              <text x="60" y="30" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">Y VENTAS</text>
+              <text x="60" y="50" text-anchor="middle" fill="rgba(26,16,8,0.55)" font-size="9">Área</text>
+            </g>
+
+            <!-- Área Administrativa y Financiera -->
+            <g filter="url(#shadow)" transform="translate(630,258)">
+              <rect width="140" height="60" rx="8" fill="url(#gArea)"/>
+              <text x="70" y="18" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">ADMINISTRATIVA</text>
+              <text x="70" y="30" text-anchor="middle" fill="#2d5a2d" font-size="9" font-weight="700">Y FINANCIERA</text>
+              <text x="70" y="50" text-anchor="middle" fill="rgba(26,16,8,0.55)" font-size="9">Área</text>
+            </g>
+
+            <!-- ══════════════════════════════════
+                 LEVEL 4 — Cargos operativos
+            ══════════════════════════════════ -->
+            <!-- Encargado de Compras -->
+            <g filter="url(#shadow)" transform="translate(20,342)">
+              <rect width="120" height="56" rx="8" fill="url(#gOp)"/>
+              <text x="60" y="18" text-anchor="middle" fill="#8b5e1a" font-size="9" font-weight="700">COMPRAS</text>
+              <text x="60" y="33" text-anchor="middle" fill="#1a1008" font-size="11" font-family="Cormorant Garamond,serif" font-weight="700">Encargado de</text>
+              <text x="60" y="47" text-anchor="middle" fill="#1a1008" font-size="11" font-family="Cormorant Garamond,serif" font-weight="700">Compras</text>
+            </g>
+
+            <!-- Operario de Producción -->
+            <g filter="url(#shadow)" transform="translate(150,342)">
+              <rect width="100" height="56" rx="8" fill="url(#gOp)"/>
+              <text x="50" y="18" text-anchor="middle" fill="#8b5e1a" font-size="9" font-weight="700">PRODUCCIÓN</text>
+              <text x="50" y="33" text-anchor="middle" fill="#1a1008" font-size="11" font-family="Cormorant Garamond,serif" font-weight="700">Operario de</text>
+              <text x="50" y="47" text-anchor="middle" fill="#1a1008" font-size="11" font-family="Cormorant Garamond,serif" font-weight="700">Producción</text>
+            </g>
+
+            <!-- Técnico de Control de Calidad -->
+            <g filter="url(#shadow)" transform="translate(265,342)">
+              <rect width="120" height="56" rx="8" fill="url(#gOp)"/>
+              <text x="60" y="16" text-anchor="middle" fill="#8b5e1a" font-size="9" font-weight="700">CALIDAD</text>
+              <text x="60" y="30" text-anchor="middle" fill="#1a1008" font-size="10" font-family="Cormorant Garamond,serif" font-weight="700">Téc. Control de</text>
+              <text x="60" y="44" text-anchor="middle" fill="#1a1008" font-size="10" font-family="Cormorant Garamond,serif" font-weight="700">Calidad</text>
+              <text x="60" y="55" text-anchor="middle" fill="#8b5e1a" font-size="8" font-style="italic">(Dir. Producción)</text>
+            </g>
+
+            <!-- Asesor de Ventas -->
+            <g filter="url(#shadow)" transform="translate(400,342)">
+              <rect width="120" height="56" rx="8" fill="url(#gOp)"/>
+              <text x="60" y="18" text-anchor="middle" fill="#8b5e1a" font-size="9" font-weight="700">VENTAS</text>
+              <text x="60" y="33" text-anchor="middle" fill="#1a1008" font-size="11" font-family="Cormorant Garamond,serif" font-weight="700">Asesor de</text>
+              <text x="60" y="47" text-anchor="middle" fill="#1a1008" font-size="11" font-family="Cormorant Garamond,serif" font-weight="700">Ventas</text>
+              <text x="60" y="55" text-anchor="middle" fill="#8b5e1a" font-size="8" font-style="italic">(Dir. Comercial)</text>
+            </g>
+
+            <!-- Contador — dashed border = no fijo -->
+            <g filter="url(#shadow)" transform="translate(630,342)">
+              <rect width="140" height="56" rx="8" fill="url(#gOp)"
+                    stroke="#9a7d30" stroke-width="1.8" stroke-dasharray="6,3"/>
+              <text x="70" y="18" text-anchor="middle" fill="#8b5e1a" font-size="9" font-weight="700">FINANZAS</text>
+              <text x="70" y="35" text-anchor="middle" fill="#1a1008" font-size="12" font-family="Cormorant Garamond,serif" font-weight="700">Contador</text>
+              <text x="70" y="50" text-anchor="middle" fill="#8b5e1a" font-size="8" font-style="italic">Colaborador por fechas</text>
+            </g>
+
+          </svg>
+        </div>
+
+        <!-- Leyenda -->
+        <div class="org-legend">
+          <div class="org-legend-item">
+            <div class="leg-solid"></div>
+            <span>Línea jerárquica</span>
           </div>
-
-          <div class="org-connector"></div>
-
-          <!-- Nivel 2: Tres direcciones -->
-          <div class="org-level org-h-line">
-            <div class="org-box">
-              <div class="ob-title">Producción</div>
-              <div class="ob-name">Directora de Producción</div>
-            </div>
-            <div class="org-box">
-              <div class="ob-title">Comercial</div>
-              <div class="ob-name">Directora Comercial</div>
-            </div>
-            <div class="org-box">
-              <div class="ob-title">Finanzas</div>
-              <div class="ob-name">Contador</div>
-            </div>
+          <div class="org-legend-item">
+            <div class="leg-dashed"></div>
+            <span>Doble rol / Colaborador por fechas</span>
           </div>
-
-          <div class="org-connector"></div>
-
-          <!-- Nivel 3: Operativos -->
-          <div class="org-level org-h-line">
-            <div class="org-box">
-              <div class="ob-title">Compras</div>
-              <div class="ob-name">Encargado de Compras</div>
-            </div>
-            <div class="org-box">
-              <div class="ob-title">Producción</div>
-              <div class="ob-name">Operario de Producción</div>
-            </div>
-            <div class="org-box">
-              <div class="ob-title">Producción</div>
-              <div class="ob-name">Auxiliar de Producción</div>
-            </div>
-            <div class="org-box">
-              <div class="ob-title">Calidad</div>
-              <div class="ob-name">Técnico de Calidad</div>
-            </div>
-            <div class="org-box">
-              <div class="ob-title">Marketing</div>
-              <div class="ob-name">Community Manager</div>
-            </div>
-            <div class="org-box">
-              <div class="ob-title">Ventas</div>
-              <div class="ob-name">Asesor de Ventas</div>
-            </div>
-          </div>
-
-          <p class="org-note">Coloca <strong>organigrama.png</strong> en la carpeta para reemplazar este diagrama con tu imagen oficial.</p>
         </div>
       </div>
     </div>
@@ -431,11 +544,11 @@
         </div>
         <div class="footer-social"><a href="#">📸</a><a href="#">📘</a><a href="#">🎵</a><a href="#">💬</a></div>
       </div>
-      <div class="footer-col"><h4>Empresa</h4><a href="sobre-nosotros.html">Sobre Nosotros</a><a href="valores.html">Valores Corporativos</a><a href="equipo.html">Equipo BeeSkin</a><a href="dofa.html">DOFA</a><a href="costos.html">Costos</a></div>
+      <div class="footer-col"><h4>Empresa</h4><a href="sobre-nosotros.html">Sobre Nosotros</a><a href="valores.html">Valores Corporativos</a><a href="equipo.html">Equipo BeeSkin</a></div>
       <div class="footer-col"><h4>Legal</h4><a href="privacidad.html">Política de Privacidad</a><a href="terminos.html">Términos y Condiciones</a></div>
-      <div class="footer-col"><h4>Contacto</h4><a href="mailto:info@beeskinglow.com">info@beeskinglow.com</a><a href="tel:+573000000000">+57 300 000 0000</a><span>Colombia 🇨🇴</span></div>
+      <div class="footer-col"><h4>Contacto</h4><a href="mailto:hola@beeskinglow.com">hola@beeskinglow.com</a><a href="tel:+573000000000">+57 300 000 0000</a><span>Colombia 🇨🇴</span></div>
     </div>
-    <div class="footer-bottom">© 2026 BeeSkin Glow. De la abeja a tu piel con amor..</div>
+    <div class="footer-bottom">© 2025 BeeSkin Glow. Todos los derechos reservados.</div>
   </footer>
 
   <script src="shared.js"></script>
