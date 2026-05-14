@@ -150,44 +150,121 @@
     .promo-block li { font-size: 13.5px; color: rgba(26,16,8,0.62); line-height: 1.7; }
 
     /* ── PUBLICIDAD IMAGE SLOT ── */
+    .pub-img-outer {
+      margin-bottom: 16px;
+    }
+    .pub-img-label {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--amber);
+      margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .pub-img-label::before, .pub-img-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border));
+    }
+    .pub-img-label::before { background: linear-gradient(90deg, var(--glass-border), transparent); }
     .pub-img-wrap {
       width: 100%;
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--glass-border);
-      background: linear-gradient(135deg, #f2e8d5, #e8d4a8);
-      min-height: 200px;
+      border: 1px solid rgba(200,168,75,0.35);
+      background: linear-gradient(135deg, #f7edd5, #e8d4a8);
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 8px;
       position: relative;
+      box-shadow: 0 6px 32px rgba(154,125,48,0.15), 0 1px 4px rgba(154,125,48,0.12);
     }
     .pub-img-wrap img {
-      width: 100%; display: block;
-      object-fit: contain;
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
     .pub-placeholder {
-      text-align: center; opacity: 0.4; padding: 32px;
+      text-align: center; opacity: 0.4; padding: 48px 32px;
     }
-    .pub-placeholder span { font-size: 48px; display: block; margin-bottom: 10px; }
+    .pub-placeholder span { font-size: 52px; display: block; margin-bottom: 12px; }
     .pub-placeholder p {
       font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
       color: var(--amber); margin: 0;
     }
 
-    /* ── PAYMENT BADGES ── */
-    .pay-grid {
-      display: flex; flex-wrap: wrap; gap: 10px;
+    /* ── PAYMENT SECTION ── */
+    .pay-section {
       margin-bottom: 8px;
     }
-    .pay-badge {
-      display: flex; align-items: center; gap: 7px;
-      padding: 9px 16px;
-      background: rgba(234,224,206,0.6);
+    .pay-category {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 12px;
+      border-radius: var(--radius);
+      overflow: hidden;
       border: 1px solid var(--glass-border);
-      border-radius: 60px;
-      font-size: 13px; font-weight: 500; color: var(--charcoal);
+      box-shadow: 0 2px 10px rgba(154,125,48,0.07);
+      transition: transform var(--transition), box-shadow var(--transition);
     }
-    .pay-badge span { font-size: 17px; }
+    .pay-category:hover {
+      transform: translateX(3px);
+      box-shadow: 0 4px 18px rgba(154,125,48,0.13);
+    }
+    .pay-cat-label {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #fff8e0;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      min-height: 80px;
+    }
+    .pay-cat-icon {
+      font-size: 26px;
+      line-height: 1;
+    }
+    .pay-cat-name {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,245,190,0.95);
+    }
+    .pay-cat-methods {
+      background: rgba(234,224,206,0.45);
+      padding: 16px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .pay-method-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(255,252,240,0.9);
+      border: 1px solid rgba(200,168,75,0.25);
+      border-radius: 40px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--charcoal);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .pay-method-chip:hover {
+      background: rgba(200,168,75,0.12);
+      border-color: rgba(200,168,75,0.5);
+    }
+    .pay-method-chip .chip-icon { font-size: 15px; }
+    @media (max-width: 560px) {
+      .pay-category { grid-template-columns: 1fr; }
+      .pay-cat-label { flex-direction: row; min-height: auto; padding: 12px 16px; justify-content: flex-start; }
+    }
+
 
     /* ── POST VENTA ── */
     .postv-list {
@@ -441,25 +518,67 @@
 
       <!-- 2.5.3 Publicidad (imagen) -->
       <h3 class="s-sub3 reveal">2.5.3 Publicidad — Diseño</h3>
-      <div class="pub-img-wrap reveal" style="transition-delay:.10s">
-        <img src="publicidad.png" alt="Diseño publicitario BeeSkin Glow"
-             onerror="this.style.display='none'; document.getElementById('pub-ph').style.display='flex'"/>
-        <div class="pub-placeholder" id="pub-ph">
-          <span>🎨</span>
-          <p>publicidad.png</p>
+      <div class="pub-img-outer reveal" style="transition-delay:.10s">
+        <div class="pub-img-label">Pieza Publicitaria BeeSkin Glow</div>
+        <div class="pub-img-wrap">
+          <img src="publicidad.png" alt="Diseño publicitario BeeSkin Glow"
+               onerror="this.style.display='none'; document.getElementById('pub-ph').style.display='flex'"/>
+          <div class="pub-placeholder" id="pub-ph" style="display:none">
+            <span>🎨</span>
+            <p>publicidad.png</p>
+          </div>
         </div>
       </div>
 
       <!-- 2.5.4 Formas de pago -->
       <h3 class="s-sub3 reveal">2.5.4 Formas de Pago</h3>
-      <div class="pay-grid reveal" style="transition-delay:.10s">
-        <div class="pay-badge"><span>💵</span> Efectivo</div>
-        <div class="pay-badge"><span>🏦</span> Transferencias bancarias</div>
-        <div class="pay-badge"><span>📱</span> Nequi</div>
-        <div class="pay-badge"><span>📲</span> Daviplata</div>
-        <div class="pay-badge"><span>💳</span> Tarjetas débito y crédito</div>
-        <div class="pay-badge"><span>📷</span> Pagos por código QR</div>
-        <div class="pay-badge"><span>🌐</span> Plataformas digitales de pago</div>
+      <div class="pay-section reveal" style="transition-delay:.10s">
+
+        <div class="pay-category">
+          <div class="pay-cat-label">
+            <span class="pay-cat-icon">💵</span>
+            <span class="pay-cat-name">Efectivo</span>
+          </div>
+          <div class="pay-cat-methods">
+            <span class="pay-method-chip"><span class="chip-icon">💵</span> Pago en efectivo</span>
+          </div>
+        </div>
+
+        <div class="pay-category">
+          <div class="pay-cat-label">
+            <span class="pay-cat-icon">📱</span>
+            <span class="pay-cat-name">Billeteras Digitales</span>
+          </div>
+          <div class="pay-cat-methods">
+            <span class="pay-method-chip"><span class="chip-icon">📱</span> Nequi</span>
+            <span class="pay-method-chip"><span class="chip-icon">📲</span> Daviplata</span>
+            <span class="pay-method-chip"><span class="chip-icon">📷</span> Pago por QR</span>
+          </div>
+        </div>
+
+        <div class="pay-category">
+          <div class="pay-cat-label">
+            <span class="pay-cat-icon">🏦</span>
+            <span class="pay-cat-name">Transferencias Bancarias</span>
+          </div>
+          <div class="pay-cat-methods">
+            <span class="pay-method-chip"><span class="chip-icon">🏦</span> PSE</span>
+            <span class="pay-method-chip"><span class="chip-icon">🔄</span> Transferencia bancaria</span>
+            <span class="pay-method-chip"><span class="chip-icon">🌐</span> Plataformas digitales</span>
+          </div>
+        </div>
+
+        <div class="pay-category">
+          <div class="pay-cat-label">
+            <span class="pay-cat-icon">💳</span>
+            <span class="pay-cat-name">Tarjetas</span>
+          </div>
+          <div class="pay-cat-methods">
+            <span class="pay-method-chip"><span class="chip-icon">💳</span> Tarjeta débito</span>
+            <span class="pay-method-chip"><span class="chip-icon">💳</span> Tarjeta crédito</span>
+          </div>
+        </div>
+
       </div>
       <p class="s-intro reveal" style="transition-delay:.14s; margin-top:12px">Esto permitirá mayor comodidad y accesibilidad para los consumidores.</p>
 
