@@ -254,344 +254,420 @@
       </div>
     </div>
 
-    <!-- ORGANIGRAMA -->
-    <div class="org-section">
-      <h2 class="reveal">Organigrama</h2>
-      <div class="gold-line reveal" style="transition-delay:.06s"></div>
-      <div class="org-frame reveal" style="transition-delay:.12s">
-        <div class="org-svg-wrap">
-          <!--
-          LAYOUT REDISEÑADO — viewBox 0 0 960 560
-          ═══════════════════════════════════════════════════════
-          Nivel 1  y=24   Dir. General           cx=480  w=210 h=72
-          Nivel 2  y=148  Producción cx=175 | Comercial cx=480 | Admin cx=785   w=190 h=64
-          Nivel 3  y=276  Compras cx=50 | Prod cx=185 | Calidad cx=320          w=120 h=62
-                          Mkt cx=480                                             w=120 h=62
-                          Admin.Fin cx=785                                       w=120 h=62
-          Nivel 4  y=406  Enc.Compras cx=50 | Operario cx=185 | TecCalidad cx=320
-                          AsesorVentas cx=480
-                          Contador cx=785 (dashed)
+<!-- Organigrama-->
+<div class="org-section">
+  <h2 class="reveal">Organigrama</h2>
+  <div class="gold-line reveal" style="transition-delay:.06s"></div>
 
-          Doble-rol punteado:
-            Dir.Producción → TecCalidad (Nivel4): sale por derecha (x=270), va a y=230, baja a y=430, va al top de TecCalidad
-            Dir.Comercial  → AsesorVentas (Nivel4): sale por derecha (x=575), va a y=230, baja a y=430, va al top de AsesorVentas
-          ═══════════════════════════════════════════════════════
-          -->
-          <svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg"
-               font-family="Montserrat,sans-serif" font-size="11">
-            <defs>
-              <!-- Gradientes de nodos -->
-              <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#C8A84B"/>
-                <stop offset="100%" stop-color="#7A5C18"/>
-              </linearGradient>
-              <linearGradient id="gDir" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#FDF5E0"/>
-                <stop offset="100%" stop-color="#F0D98A"/>
-              </linearGradient>
-              <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#E0F0E0"/>
-                <stop offset="100%" stop-color="#B4D4B4"/>
-              </linearGradient>
-              <linearGradient id="gOp" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#FFFBEE"/>
-                <stop offset="100%" stop-color="#F5E5A0"/>
-              </linearGradient>
-              <linearGradient id="gOpDash" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#FFF8E8"/>
-                <stop offset="100%" stop-color="#EDCC70"/>
-              </linearGradient>
-              <!-- Sombra suave -->
-              <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
-                <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a1008" flood-opacity="0.12"/>
-              </filter>
-              <!-- Fondo decorativo hexagonal sutil -->
-              <pattern id="hex-bg" x="0" y="0" width="40" height="46" patternUnits="userSpaceOnUse">
-                <polygon points="20,2 38,12 38,34 20,44 2,34 2,12"
-                  fill="none" stroke="rgba(200,168,75,0.07)" stroke-width="1"/>
-              </pattern>
-            </defs>
+  <div class="org-frame reveal" style="transition-delay:.12s">
+    <div class="org-svg-wrap">
 
-            <!-- Fondo decorativo sutil -->
-            <rect width="960" height="560" fill="url(#hex-bg)" rx="16"/>
+      <svg viewBox="0 0 960 560"
+           xmlns="http://www.w3.org/2000/svg"
+           font-family="Montserrat,sans-serif"
+           font-size="11">
 
-            <!-- ══════════════ LÍNEAS SÓLIDAS JERÁRQUICAS ══════════════ -->
+        <defs>
 
-            <!-- Tronco Nivel1 → horizontal Nivel2 -->
-            <line x1="480" y1="96"  x2="480" y2="120" stroke="#B8922A" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="175" y1="120" x2="785" y2="120" stroke="#B8922A" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="175" y1="120" x2="175" y2="148" stroke="#B8922A" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="480" y1="120" x2="480" y2="148" stroke="#B8922A" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="785" y1="120" x2="785" y2="148" stroke="#B8922A" stroke-width="1.8" stroke-linecap="round"/>
+          <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#C8A84B"/>
+            <stop offset="100%" stop-color="#7A5C18"/>
+          </linearGradient>
 
-            <!-- Dir.Producción (bottom=212) → barra horizontal hijos Nivel3 (x 50–320) -->
-            <line x1="175" y1="212" x2="175" y2="238" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="50"  y1="238" x2="320" y2="238" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="50"  y1="238" x2="50"  y2="276" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="185" y1="238" x2="185" y2="276" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="320" y1="238" x2="320" y2="276" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
+          <linearGradient id="gDir" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FDF5E0"/>
+            <stop offset="100%" stop-color="#F0D98A"/>
+          </linearGradient>
 
-            <!-- Nivel3 → Nivel4 sólidas -->
-            <line x1="50"  y1="338" x2="50"  y2="406" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="185" y1="338" x2="185" y2="406" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="320" y1="338" x2="320" y2="406" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
+          <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#E0F0E0"/>
+            <stop offset="100%" stop-color="#B4D4B4"/>
+          </linearGradient>
 
-            <!-- Dir.Comercial → Nivel3 Mkt -->
-            <line x1="480" y1="212" x2="480" y2="276" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
-            <!-- Mkt → AsesorVentas -->
-            <line x1="480" y1="338" x2="480" y2="406" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
+          <linearGradient id="gOp" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFFBEE"/>
+            <stop offset="100%" stop-color="#F5E5A0"/>
+          </linearGradient>
 
-            <!-- Admin.Fin dir → Nivel3 Admin -->
-            <line x1="785" y1="212" x2="785" y2="276" stroke="#B8922A" stroke-width="1.6" stroke-linecap="round"/>
-            <!-- Admin Nivel3 → Contador DASHED (colaborador por fechas) -->
-            <line x1="785" y1="338" x2="785" y2="406"
-                  stroke="#B8922A" stroke-width="1.6" stroke-dasharray="6,4" stroke-linecap="round"/>
+          <linearGradient id="gOpDash" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFF8E8"/>
+            <stop offset="100%" stop-color="#EDCC70"/>
+          </linearGradient>
 
-            <!-- ══ LÍNEAS DOBLE ROL — rutas exteriores sin cruce ══ -->
-            <!--
-              Dir.Producción right=270, mid-y=180
-              Tec.Calidad top=406, mid-x=320
-              Ruta: sale derecha de Dir.Prod (270,180) → x=430 (espacio libre) → baja a y=392 → izquierda hasta (320,392) → sube a tope del nodo
-            -->
-            <path d="M 270,180 H 430 V 394 H 320 V 406"
-                  fill="none" stroke="#C8A84B" stroke-width="1.5"
-                  stroke-dasharray="6,4" stroke-linecap="round" opacity="0.8"/>
+          <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="3" stdDeviation="4"
+              flood-color="#1a1008"
+              flood-opacity="0.12"/>
+          </filter>
 
-            <!-- Etiqueta doble rol — colocada en zona libre del recorrido -->
-            <rect x="428" y="255" width="56" height="17" rx="4"
-                  fill="rgba(250,240,210,0.92)" stroke="rgba(200,168,75,0.3)" stroke-width="1"/>
-            <text x="456" y="267" text-anchor="middle"
-                  fill="#9a6010" font-size="8.5" font-style="italic" font-weight="600">doble rol</text>
+          <pattern id="hex-bg"
+                   x="0"
+                   y="0"
+                   width="40"
+                   height="46"
+                   patternUnits="userSpaceOnUse">
 
-            <!--
-              Dir.Comercial right=575, mid-y=180
-              AsesorVentas top=406, mid-x=480
-              Ruta: sale derecha (575,180) → x=640 → baja a y=392 → izquierda hasta (480,392) → entra al nodo
-            -->
-            <path d="M 575,180 H 640 V 394 H 480 V 406"
-                  fill="none" stroke="#C8A84B" stroke-width="1.5"
-                  stroke-dasharray="6,4" stroke-linecap="round" opacity="0.8"/>
+            <polygon
+              points="20,2 38,12 38,34 20,44 2,34 2,12"
+              fill="none"
+              stroke="rgba(200,168,75,0.07)"
+              stroke-width="1"/>
+          </pattern>
 
-            <rect x="638" y="255" width="56" height="17" rx="4"
-                  fill="rgba(250,240,210,0.92)" stroke="rgba(200,168,75,0.3)" stroke-width="1"/>
-            <text x="666" y="267" text-anchor="middle"
-                  fill="#9a6010" font-size="8.5" font-style="italic" font-weight="600">doble rol</text>
+        </defs>
 
-            <!-- ══════════════ NODOS ══════════════ -->
+        <!-- Fondo -->
+        <rect width="960" height="560" fill="url(#hex-bg)" rx="16"/>
 
-            <!-- ── NIVEL 1: Directora General  x=375 y=24 w=210 h=72 ── -->
-            <g filter="url(#sh)" transform="translate(375,24)">
-              <rect width="210" height="72" rx="12" fill="url(#gTop)"/>
-              <!-- Brillo superior -->
-              <rect x="10" y="5" width="190" height="20" rx="8" fill="rgba(255,255,200,0.13)"/>
-              <text x="105" y="22" text-anchor="middle"
-                    fill="rgba(255,240,200,0.9)" font-size="9" font-weight="700" letter-spacing="1.5">DIRECCIÓN GENERAL</text>
-              <line x1="25" y1="28" x2="185" y2="28" stroke="rgba(255,220,100,0.3)" stroke-width="0.8"/>
-              <text x="105" y="46" text-anchor="middle"
-                    fill="#fff8e0" font-size="13.5" font-weight="700" font-family="Cormorant Garamond,serif">Directora General</text>
-              <text x="105" y="62" text-anchor="middle"
-                    fill="rgba(255,240,180,0.75)" font-size="9">Administración de Empresas</text>
-            </g>
+        <!-- ═══════════════ LÍNEAS JERÁRQUICAS ═══════════════ -->
 
-            <!-- ── NIVEL 2 ── -->
+        <!-- Tronco superior -->
+        <line x1="480" y1="96" x2="480" y2="120"
+              stroke="#B8922A"
+              stroke-width="1.8"
+              stroke-linecap="round"/>
 
-            <!-- Dir. Producción  x=80 y=148 w=190 h=64 -->
-            <g filter="url(#sh)" transform="translate(80,148)">
-              <rect width="190" height="64" rx="10" fill="url(#gDir)"/>
-              <rect x="0" y="0" width="190" height="22" rx="10" fill="rgba(200,168,75,0.18)"/>
-              <rect x="0" y="12" width="190" height="10" fill="rgba(200,168,75,0.18)"/>
-              <text x="95" y="15" text-anchor="middle"
-                    fill="#7A5018" font-size="8.5" font-weight="700" letter-spacing="1.2">PRODUCCIÓN</text>
-              <text x="95" y="36" text-anchor="middle"
-                    fill="#1a1008" font-size="12.5" font-weight="700" font-family="Cormorant Garamond,serif">Dir. de Producción</text>
-              <text x="95" y="54" text-anchor="middle"
-                    fill="rgba(26,16,8,0.55)" font-size="8.5">Ing. Química</text>
-            </g>
+        <line x1="135" y1="120" x2="785" y2="120"
+              stroke="#B8922A"
+              stroke-width="1.8"
+              stroke-linecap="round"/>
 
-            <!-- Dir. Comercial  x=385 y=148 w=190 h=64 -->
-            <g filter="url(#sh)" transform="translate(385,148)">
-              <rect width="190" height="64" rx="10" fill="url(#gDir)"/>
-              <rect x="0" y="0" width="190" height="22" rx="10" fill="rgba(200,168,75,0.18)"/>
-              <rect x="0" y="12" width="190" height="10" fill="rgba(200,168,75,0.18)"/>
-              <text x="95" y="15" text-anchor="middle"
-                    fill="#7A5018" font-size="8.5" font-weight="700" letter-spacing="1.2">COMERCIAL</text>
-              <text x="95" y="36" text-anchor="middle"
-                    fill="#1a1008" font-size="12.5" font-weight="700" font-family="Cormorant Garamond,serif">Dir. Comercial</text>
-              <text x="95" y="54" text-anchor="middle"
-                    fill="rgba(26,16,8,0.55)" font-size="8.5">Mercadeo y Neg. Int.</text>
-            </g>
+        <line x1="135" y1="120" x2="135" y2="148"
+              stroke="#B8922A"
+              stroke-width="1.8"
+              stroke-linecap="round"/>
 
-            <!-- Área Admin.  x=690 y=148 w=190 h=64 -->
-            <g filter="url(#sh)" transform="translate(690,148)">
-              <rect width="190" height="64" rx="10" fill="url(#gDir)"/>
-              <rect x="0" y="0" width="190" height="22" rx="10" fill="rgba(200,168,75,0.18)"/>
-              <rect x="0" y="12" width="190" height="10" fill="rgba(200,168,75,0.18)"/>
-              <text x="95" y="15" text-anchor="middle"
-                    fill="#7A5018" font-size="7.5" font-weight="700" letter-spacing="1">ADMIN. Y FINANCIERA</text>
-              <text x="95" y="36" text-anchor="middle"
-                    fill="#1a1008" font-size="12.5" font-weight="700" font-family="Cormorant Garamond,serif">Área Administrativa</text>
-              <text x="95" y="54" text-anchor="middle"
-                    fill="rgba(26,16,8,0.55)" font-size="8.5">a cargo: Dir. General</text>
-            </g>
+        <line x1="480" y1="120" x2="480" y2="148"
+              stroke="#B8922A"
+              stroke-width="1.8"
+              stroke-linecap="round"/>
 
-            <!-- ── NIVEL 3 ── -->
+        <line x1="785" y1="120" x2="785" y2="148"
+              stroke="#B8922A"
+              stroke-width="1.8"
+              stroke-linecap="round"/>
 
-            <!-- Área Compras  x=-10 y=276 w=120 h=62 -->
-            <g filter="url(#sh)" transform="translate(-10,276)">
-              <rect width="120" height="62" rx="9" fill="url(#gArea)"/>
-              <rect x="0" y="0" width="120" height="20" rx="9" fill="rgba(50,120,50,0.15)"/>
-              <rect x="0" y="11" width="120" height="9" fill="rgba(50,120,50,0.15)"/>
-              <text x="60" y="14" text-anchor="middle"
-                    fill="#2a5a2a" font-size="8" font-weight="700" letter-spacing=".8">COMPRAS Y PROV.</text>
-              <text x="60" y="44" text-anchor="middle"
-                    fill="#1a3a1a" font-size="11.5" font-family="Cormorant Garamond,serif" font-weight="600">Área</text>
-            </g>
+        <!-- Producción -->
+        <line x1="135" y1="212" x2="135" y2="238"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Área Producción  x=125 y=276 w=120 h=62 -->
-            <g filter="url(#sh)" transform="translate(125,276)">
-              <rect width="120" height="62" rx="9" fill="url(#gArea)"/>
-              <rect x="0" y="0" width="120" height="20" rx="9" fill="rgba(50,120,50,0.15)"/>
-              <rect x="0" y="11" width="120" height="9" fill="rgba(50,120,50,0.15)"/>
-              <text x="60" y="14" text-anchor="middle"
-                    fill="#2a5a2a" font-size="8" font-weight="700" letter-spacing=".8">PRODUCCIÓN</text>
-              <text x="60" y="44" text-anchor="middle"
-                    fill="#1a3a1a" font-size="11.5" font-family="Cormorant Garamond,serif" font-weight="600">Área</text>
-            </g>
+        <line x1="10" y1="238" x2="320" y2="238"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Área Control Calidad  x=260 y=276 w=120 h=62 -->
-            <g filter="url(#sh)" transform="translate(260,276)">
-              <rect width="120" height="62" rx="9" fill="url(#gArea)"/>
-              <rect x="0" y="0" width="120" height="20" rx="9" fill="rgba(50,120,50,0.15)"/>
-              <rect x="0" y="11" width="120" height="9" fill="rgba(50,120,50,0.15)"/>
-              <text x="60" y="14" text-anchor="middle"
-                    fill="#2a5a2a" font-size="8" font-weight="700" letter-spacing=".8">CTRL. CALIDAD</text>
-              <text x="60" y="44" text-anchor="middle"
-                    fill="#1a3a1a" font-size="11.5" font-family="Cormorant Garamond,serif" font-weight="600">Área</text>
-            </g>
+        <line x1="50" y1="238" x2="50" y2="276"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Área Marketing y Ventas  x=420 y=276 w=120 h=62 -->
-            <g filter="url(#sh)" transform="translate(420,276)">
-              <rect width="120" height="62" rx="9" fill="url(#gArea)"/>
-              <rect x="0" y="0" width="120" height="20" rx="9" fill="rgba(50,120,50,0.15)"/>
-              <rect x="0" y="11" width="120" height="9" fill="rgba(50,120,50,0.15)"/>
-              <text x="60" y="14" text-anchor="middle"
-                    fill="#2a5a2a" font-size="8" font-weight="700" letter-spacing=".8">MARKETING</text>
-              <text x="60" y="44" text-anchor="middle"
-                    fill="#1a3a1a" font-size="11.5" font-family="Cormorant Garamond,serif" font-weight="600">Área</text>
-            </g>
+        <line x1="185" y1="238" x2="185" y2="276"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Área Admin. y Financiera  x=725 y=276 w=120 h=62 -->
-            <g filter="url(#sh)" transform="translate(725,276)">
-              <rect width="120" height="62" rx="9" fill="url(#gArea)"/>
-              <rect x="0" y="0" width="120" height="20" rx="9" fill="rgba(50,120,50,0.15)"/>
-              <rect x="0" y="11" width="120" height="9" fill="rgba(50,120,50,0.15)"/>
-              <text x="60" y="14" text-anchor="middle"
-                    fill="#2a5a2a" font-size="7.5" font-weight="700" letter-spacing=".5">ADMIN. FINANCIERA</text>
-              <text x="60" y="44" text-anchor="middle"
-                    fill="#1a3a1a" font-size="11.5" font-family="Cormorant Garamond,serif" font-weight="600">Área</text>
-            </g>
+        <line x1="320" y1="238" x2="320" y2="276"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- ── NIVEL 4 ── -->
+        <!-- Nivel 3 → Nivel 4 -->
+        <line x1="50" y1="338" x2="50" y2="406"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Encargado Compras  x=-10 y=406 w=120 h=70 -->
-            <g filter="url(#sh)" transform="translate(-10,406)">
-              <rect width="120" height="70" rx="9" fill="url(#gOp)"/>
-              <rect x="0" y="0" width="120" height="18" rx="9" fill="rgba(200,160,40,0.2)"/>
-              <rect x="0" y="10" width="120" height="8" fill="rgba(200,160,40,0.2)"/>
-              <text x="60" y="13" text-anchor="middle"
-                    fill="#8b5e1a" font-size="7.5" font-weight="700" letter-spacing=".8">COMPRAS</text>
-              <text x="60" y="38" text-anchor="middle"
-                    fill="#1a1008" font-size="12" font-family="Cormorant Garamond,serif" font-weight="700">Encargado</text>
-              <text x="60" y="54" text-anchor="middle"
-                    fill="#1a1008" font-size="12" font-family="Cormorant Garamond,serif" font-weight="700">de Compras</text>
-            </g>
+        <line x1="185" y1="338" x2="185" y2="406"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Operario Producción  x=125 y=406 w=120 h=70 -->
-            <g filter="url(#sh)" transform="translate(125,406)">
-              <rect width="120" height="70" rx="9" fill="url(#gOp)"/>
-              <rect x="0" y="0" width="120" height="18" rx="9" fill="rgba(200,160,40,0.2)"/>
-              <rect x="0" y="10" width="120" height="8" fill="rgba(200,160,40,0.2)"/>
-              <text x="60" y="13" text-anchor="middle"
-                    fill="#8b5e1a" font-size="7.5" font-weight="700" letter-spacing=".8">PRODUCCIÓN</text>
-              <text x="60" y="38" text-anchor="middle"
-                    fill="#1a1008" font-size="12" font-family="Cormorant Garamond,serif" font-weight="700">Operario de</text>
-              <text x="60" y="54" text-anchor="middle"
-                    fill="#1a1008" font-size="12" font-family="Cormorant Garamond,serif" font-weight="700">Producción</text>
-            </g>
+        <line x1="320" y1="338" x2="320" y2="406"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Téc. Control Calidad  x=260 y=406 w=120 h=70 -->
-            <!-- Este nodo tiene doble rol: recibe línea sólida de Área Calidad Y punteada de Dir.Producción -->
-            <g filter="url(#sh)" transform="translate(260,406)">
-              <rect width="120" height="70" rx="9" fill="url(#gOp)"/>
-              <rect x="0" y="0" width="120" height="18" rx="9" fill="rgba(200,160,40,0.2)"/>
-              <rect x="0" y="10" width="120" height="8" fill="rgba(200,160,40,0.2)"/>
-              <text x="60" y="13" text-anchor="middle"
-                    fill="#8b5e1a" font-size="7.5" font-weight="700" letter-spacing=".8">CALIDAD</text>
-              <text x="60" y="36" text-anchor="middle"
-                    fill="#1a1008" font-size="11.5" font-family="Cormorant Garamond,serif" font-weight="700">Téc. Control</text>
-              <text x="60" y="52" text-anchor="middle"
-                    fill="#1a1008" font-size="11.5" font-family="Cormorant Garamond,serif" font-weight="700">de Calidad</text>
-            </g>
+        <!-- Comercial -->
+        <line x1="520" y1="212" x2="520" y2="276"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Asesor Ventas  x=420 y=406 w=120 h=70 -->
-            <g filter="url(#sh)" transform="translate(420,406)">
-              <rect width="120" height="70" rx="9" fill="url(#gOp)"/>
-              <rect x="0" y="0" width="120" height="18" rx="9" fill="rgba(200,160,40,0.2)"/>
-              <rect x="0" y="10" width="120" height="8" fill="rgba(200,160,40,0.2)"/>
-              <text x="60" y="13" text-anchor="middle"
-                    fill="#8b5e1a" font-size="7.5" font-weight="700" letter-spacing=".8">VENTAS</text>
-              <text x="60" y="38" text-anchor="middle"
-                    fill="#1a1008" font-size="12" font-family="Cormorant Garamond,serif" font-weight="700">Asesor de</text>
-              <text x="60" y="54" text-anchor="middle"
-                    fill="#1a1008" font-size="12" font-family="Cormorant Garamond,serif" font-weight="700">Ventas</text>
-            </g>
+        <line x1="520" y1="338" x2="520" y2="406"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-            <!-- Contador  x=725 y=406 w=120 h=70 — borde punteado = colaborador por fechas -->
-            <g filter="url(#sh)" transform="translate(725,406)">
-              <rect width="120" height="70" rx="9" fill="url(#gOpDash)"
-                    stroke="#C8A84B" stroke-width="2" stroke-dasharray="6,3"/>
-              <rect x="0" y="0" width="120" height="18" rx="9" fill="rgba(200,160,40,0.22)"/>
-              <rect x="0" y="10" width="120" height="8" fill="rgba(200,160,40,0.22)"/>
-              <text x="60" y="13" text-anchor="middle"
-                    fill="#8b5e1a" font-size="7.5" font-weight="700" letter-spacing=".8">FINANZAS</text>
-              <text x="60" y="38" text-anchor="middle"
-                    fill="#1a1008" font-size="13" font-family="Cormorant Garamond,serif" font-weight="700">Contador</text>
-              <text x="60" y="55" text-anchor="middle"
-                    fill="#9a6010" font-size="8" font-style="italic">Colaborador por fechas</text>
-            </g>
+        <!-- Admin -->
+        <line x1="785" y1="212" x2="785" y2="276"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-linecap="round"/>
 
-          </svg>
-        </div>
-        <!-- Leyenda -->
-        <div class="org-legend">
-          <div class="org-legend-item">
-            <div class="leg-color" style="background:linear-gradient(135deg,#C8A84B,#7A5C18)"></div>
-            <span>Dirección General</span>
-          </div>
-          <div class="org-legend-item">
-            <div class="leg-color" style="background:linear-gradient(135deg,#FDF5E0,#F0D98A)"></div>
-            <span>Directivos (Nivel 2)</span>
-          </div>
-          <div class="org-legend-item">
-            <div class="leg-color" style="background:linear-gradient(135deg,#E0F0E0,#B4D4B4)"></div>
-            <span>Áreas operativas (Nivel 3)</span>
-          </div>
-          <div class="org-legend-item">
-            <div class="leg-color" style="background:linear-gradient(135deg,#FFFBEE,#F5E5A0)"></div>
-            <span>Roles operativos (Nivel 4)</span>
-          </div>
-          <div class="org-legend-item">
-            <div class="leg-solid"></div>
-            <span>Línea jerárquica</span>
-          </div>
-          <div class="org-legend-item">
-            <div class="leg-dashed"></div>
-            <span>Doble rol / Colaborador por fechas</span>
-          </div>
-        </div>
-      </div>
+        <line x1="785" y1="338" x2="785" y2="406"
+              stroke="#B8922A"
+              stroke-width="1.6"
+              stroke-dasharray="6,4"
+              stroke-linecap="round"/>
+
+        <!-- ═══════════════ LÍNEAS SECUNDARIAS ═══════════════ -->
+
+        <!-- Producción -->
+        <path d="M 230,180 H 360 V 394 H 320 V 406"
+              fill="none"
+              stroke="#C8A84B"
+              stroke-width="1.5"
+              stroke-dasharray="6,4"
+              stroke-linecap="round"
+              opacity="0.75"/>
+
+        <!-- Comercial -->
+        <path d="M 635,180 H 700 V 394 H 520 V 406"
+              fill="none"
+              stroke="#C8A84B"
+              stroke-width="1.5"
+              stroke-dasharray="6,4"
+              stroke-linecap="round"
+              opacity="0.75"/>
+
+        <!-- ═══════════════ NODOS ═══════════════ -->
+
+        <!-- Dirección General -->
+        <g filter="url(#sh)" transform="translate(375,24)">
+
+          <rect width="210" height="72" rx="12" fill="url(#gTop)"/>
+
+          <rect x="10" y="5"
+                width="190"
+                height="20"
+                rx="8"
+                fill="rgba(255,255,200,0.13)"/>
+
+          <text x="105"
+                y="22"
+                text-anchor="middle"
+                fill="rgba(255,240,200,0.9)"
+                font-size="9"
+                font-weight="700"
+                letter-spacing="1.5">
+
+            DIRECCIÓN GENERAL
+
+          </text>
+
+          <line x1="25"
+                y1="28"
+                x2="185"
+                y2="28"
+                stroke="rgba(255,220,100,0.3)"
+                stroke-width="0.8"/>
+
+          <text x="105"
+                y="46"
+                text-anchor="middle"
+                fill="#fff8e0"
+                font-size="13.5"
+                font-weight="700"
+                font-family="Cormorant Garamond,serif">
+
+            Directora General
+
+          </text>
+
+          <text x="105"
+                y="62"
+                text-anchor="middle"
+                fill="rgba(255,240,180,0.75)"
+                font-size="9">
+
+            Administración de Empresas
+
+          </text>
+
+        </g>
+
+        <!-- Producción -->
+        <g filter="url(#sh)" transform="translate(40,148)">
+
+          <rect width="190" height="64" rx="10" fill="url(#gDir)"/>
+
+          <rect x="0" y="0"
+                width="190"
+                height="22"
+                rx="10"
+                fill="rgba(200,168,75,0.18)"/>
+
+          <rect x="0"
+                y="12"
+                width="190"
+                height="10"
+                fill="rgba(200,168,75,0.18)"/>
+
+          <text x="95"
+                y="15"
+                text-anchor="middle"
+                fill="#7A5018"
+                font-size="8.5"
+                font-weight="700"
+                letter-spacing="1.2">
+
+            PRODUCCIÓN
+
+          </text>
+
+          <text x="95"
+                y="36"
+                text-anchor="middle"
+                fill="#1a1008"
+                font-size="12.5"
+                font-weight="700"
+                font-family="Cormorant Garamond,serif">
+
+            Dir. de Producción
+
+          </text>
+
+          <text x="95"
+                y="54"
+                text-anchor="middle"
+                fill="rgba(26,16,8,0.55)"
+                font-size="8.5">
+
+            Ing. Química
+
+          </text>
+
+        </g>
+
+        <!-- Comercial -->
+        <g filter="url(#sh)" transform="translate(425,148)">
+
+          <rect width="190" height="64" rx="10" fill="url(#gDir)"/>
+
+          <rect x="0" y="0"
+                width="190"
+                height="22"
+                rx="10"
+                fill="rgba(200,168,75,0.18)"/>
+
+          <rect x="0"
+                y="12"
+                width="190"
+                height="10"
+                fill="rgba(200,168,75,0.18)"/>
+
+          <text x="95"
+                y="15"
+                text-anchor="middle"
+                fill="#7A5018"
+                font-size="8.5"
+                font-weight="700"
+                letter-spacing="1.2">
+
+            COMERCIAL
+
+          </text>
+
+          <text x="95"
+                y="36"
+                text-anchor="middle"
+                fill="#1a1008"
+                font-size="12.5"
+                font-weight="700"
+                font-family="Cormorant Garamond,serif">
+
+            Dir. Comercial
+
+          </text>
+
+          <text x="95"
+                y="54"
+                text-anchor="middle"
+                fill="rgba(26,16,8,0.55)"
+                font-size="8.5">
+
+            Mercadeo y Neg. Int.
+
+          </text>
+
+        </g>
+
+        <!-- Admin -->
+        <g filter="url(#sh)" transform="translate(690,148)">
+
+          <rect width="190" height="64" rx="10" fill="url(#gDir)"/>
+
+          <rect x="0" y="0"
+                width="190"
+                height="22"
+                rx="10"
+                fill="rgba(200,168,75,0.18)"/>
+
+          <rect x="0"
+                y="12"
+                width="190"
+                height="10"
+                fill="rgba(200,168,75,0.18)"/>
+
+          <text x="95"
+                y="15"
+                text-anchor="middle"
+                fill="#7A5018"
+                font-size="7.5"
+                font-weight="700"
+                letter-spacing="1">
+
+            ADMIN. Y FINANCIERA
+
+          </text>
+
+          <text x="95"
+                y="36"
+                text-anchor="middle"
+                fill="#1a1008"
+                font-size="12.5"
+                font-weight="700"
+                font-family="Cormorant Garamond,serif">
+
+            Área Administrativa
+
+          </text>
+
+          <text x="95"
+                y="54"
+                text-anchor="middle"
+                fill="rgba(26,16,8,0.55)"
+                font-size="8.5">
+
+            a cargo: Dir. General
+
+          </text>
+
+        </g>
+
+      </svg>
+
     </div>
+
+    <!-- LEYENDA -->
+    <div class="org-legend">
+
+      <div class="org-legend-item">
+        <div class="leg-solid"></div>
+        <span>Línea jerárquica</span>
+      </div>
+
+      <div class="org-legend-item">
+        <div class="leg-dashed"></div>
+        <span>Colaborador externo / relación secundaria</span>
+      </div>
+
+    </div>
+
   </div>
+</div>
 
   <!-- FOOTER -->
   <footer class="site-footer">
