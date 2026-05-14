@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estrategia — BeeSkin Glow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+
+    /* ── PAGE LAYOUT ── */
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 28px 80px;
+    }
+
+    /* ── SECTION TITLES ── */
+    .s-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      color: var(--charcoal);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .s-sub {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--charcoal);
+      margin: 48px 0 6px;
+    }
+    .s-sub3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--amber);
+      margin: 32px 0 10px;
+      font-weight: 600;
+    }
+    .s-intro {
+      font-size: 15px;
+      color: rgba(26,16,8,0.65);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    /* ── ADVANTAGE CARDS ── */
+    .adv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+    .adv-card {
+      background: rgba(234,224,206,0.55);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .adv-card::before {
+      content: '';
+      position: absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+    }
+    .adv-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-gold); }
+    .adv-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+    .adv-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem; color: var(--charcoal);
+      margin-bottom: 8px; font-weight: 600;
+    }
+    .adv-card p {
+      font-size: 13.5px; color: rgba(26,16,8,0.62); line-height: 1.65; margin: 0;
+    }
+
+    /* ── STRATEGY LIST ── */
+    .strat-list {
+      display: flex; flex-direction: column; gap: 14px;
+      margin-bottom: 20px;
+    }
+    .strat-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 20px;
+      background: rgba(234,224,206,0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .strat-item:hover { transform: translateX(4px); box-shadow: var(--shadow-sm); }
+    .strat-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--charcoal);
+      flex-shrink: 0;
+    }
+    .strat-item h4 {
+      font-size: 14px; font-weight: 600; color: var(--charcoal); margin-bottom: 4px;
+    }
+    .strat-item p {
+      font-size: 13.5px; color: rgba(26,16,8,0.62); line-height: 1.6; margin: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none; border-top: 1px solid var(--glass-border); margin: 52px 0 0;
+    }
+
+    /* ── DISTRIBUTION CHANNELS ── */
+    .dist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .dist-card {
+      padding: 20px 18px;
+      background: rgba(234,224,206,0.45);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+    }
+    .dist-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; color: var(--charcoal); margin-bottom: 10px; font-weight: 600;
+    }
+    .dist-card ul { margin: 0; padding-left: 16px; }
+    .dist-card li { font-size: 13.5px; color: rgba(26,16,8,0.62); line-height: 1.7; }
+
+    /* ── BULLET LIST ── */
+    .promo-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+    .promo-block {
+      padding: 20px 18px;
+      background: rgba(234,224,206,0.45);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+    }
+    .promo-block h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; color: var(--charcoal); margin-bottom: 10px; font-weight: 600;
+    }
+    .promo-block ul { margin: 0; padding-left: 16px; }
+    .promo-block li { font-size: 13.5px; color: rgba(26,16,8,0.62); line-height: 1.7; }
+
+    /* ── PUBLICIDAD IMAGE SLOT ── */
+    .pub-img-wrap {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      background: linear-gradient(135deg, #f2e8d5, #e8d4a8);
+      min-height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .pub-img-wrap img {
+      width: 100%; display: block;
+      object-fit: contain;
+    }
+    .pub-placeholder {
+      text-align: center; opacity: 0.4; padding: 32px;
+    }
+    .pub-placeholder span { font-size: 48px; display: block; margin-bottom: 10px; }
+    .pub-placeholder p {
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--amber); margin: 0;
+    }
+
+    /* ── PAYMENT BADGES ── */
+    .pay-grid {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .pay-badge {
+      display: flex; align-items: center; gap: 7px;
+      padding: 9px 16px;
+      background: rgba(234,224,206,0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 60px;
+      font-size: 13px; font-weight: 500; color: var(--charcoal);
+    }
+    .pay-badge span { font-size: 17px; }
+
+    /* ── POST VENTA ── */
+    .postv-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .postv-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 14px 16px;
+      background: rgba(234,224,206,0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      font-size: 13.5px; color: rgba(26,16,8,0.65); line-height: 1.5;
+    }
+    .postv-item::before {
+      content: '✦';
+      color: var(--gold); font-size: 12px; margin-top: 2px; flex-shrink: 0;
+    }
+
+    /* ── PROVIDERS ── */
+    .providers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+    .provider-card {
+      padding: 24px 20px;
+      background: rgba(234,224,206,0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      position: relative; overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .provider-card::before {
+      content: '';
+      position: absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+    }
+    .provider-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-gold); }
+    .provider-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      font-size: 13px; font-weight: 700; color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .provider-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem; color: var(--charcoal); margin-bottom: 8px; font-weight: 600;
+    }
+    .provider-loc {
+      display: flex; align-items: flex-start; gap: 6px;
+      font-size: 12px; color: var(--amber); margin-bottom: 10px; font-weight: 500;
+    }
+    .provider-card p {
+      font-size: 13.5px; color: rgba(26,16,8,0.62); line-height: 1.65; margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .promo-cols { grid-template-columns: 1fr; }
+      .adv-grid   { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .page-wrap { padding: 56px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bee-container" id="bee" style="transform:translate(200px,200px)">
+    <svg class="bee-svg" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="18" cy="12" rx="14" ry="7" fill="rgba(255,255,255,0.55)" stroke="#c8a84b" stroke-width="0.8"/>
+      <ellipse cx="18" cy="26" rx="11" ry="5.5" fill="rgba(255,255,255,0.42)" stroke="#c8a84b" stroke-width="0.8"/>
+      <ellipse cx="36" cy="20" rx="16" ry="9" fill="#1a1008"/>
+      <rect x="28" y="12" width="5" height="16" rx="2.5" fill="#d4a017" opacity="0.9"/>
+      <rect x="35" y="12" width="5" height="16" rx="2.5" fill="#d4a017" opacity="0.9"/>
+      <circle cx="51" cy="20" r="7" fill="#1a1008"/>
+      <circle cx="53" cy="18" r="1.8" fill="#d4a017"/>
+      <path d="M20 20 L14 20" stroke="#1a1008" stroke-width="2" stroke-linecap="round"/>
+      <path d="M49 14 Q52 8 56 6" stroke="#1a1008" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      <circle cx="56" cy="6" r="1.5" fill="#d4a017"/>
+    </svg>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="logo.png" alt="BeeSkin Glow" onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='block'"/>
+        <div class="logo-fallback" id="logo-fb" style="display:none"><em>Bee</em>Skin Glow<span>GLOW</span></div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="index.html">Inicio</a>
+      <a href="producto.html">Producto</a>
+      <a href="sobre-nosotros.html">Sobre Nosotros</a>
+      <a href="valores.html">Valores</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="definicion-negocio.html">Definición del Negocio</a>
+      <a href="mercado.html">Mercado</a>
+      <a href="estrategia.html">Estrategia</a>
+      <a href="dofa.html">DOFA</a>
+      <a href="costos.html">Costos</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+    </nav>
+  </header>
+
+  <div class="inner-page">
+    <div class="page-wrap">
+
+      <!-- ══════════════════════════════
+           2.4 VENTAJAS COMPETITIVAS
+      ══════════════════════════════ -->
+      <h1 class="s-title reveal">Ventajas y Estrategias<br><em style="color:var(--gold-dark);font-style:italic">Competitivas</em></h1>
+      <div class="gold-line reveal" style="transition-delay:.08s"></div>
+
+      <h2 class="s-sub reveal" style="transition-delay:.12s">Ventajas Competitivas</h2>
+
+      <div class="adv-grid">
+
+        <div class="adv-card reveal" style="transition-delay:.10s">
+          <span class="adv-icon">🌿</span>
+          <h4>Uso de Ingredientes Naturales</h4>
+          <p>La crema está elaborada principalmente con cera de abeja, aceites naturales y componentes amigables con la piel, lo que genera confianza en consumidores que buscan productos menos agresivos y más saludables.</p>
+        </div>
+
+        <div class="adv-card reveal" style="transition-delay:.14s">
+          <span class="adv-icon">🧴</span>
+          <h4>Producto Multifuncional</h4>
+          <p>La crema puede utilizarse en rostro, labios, manos y contorno de ojos, convirtiéndose en un producto práctico y versátil para el cuidado diario.</p>
+        </div>
+
+        <div class="adv-card reveal" style="transition-delay:.18s">
+          <span class="adv-icon">🌍</span>
+          <h4>Compromiso Ambiental</h4>
+          <p>BeeSkin Glow promueve el cuidado del medio ambiente mediante el uso de ingredientes naturales y procesos responsables, alineándose con la tendencia ecológica y sostenible.</p>
+        </div>
+
+        <div class="adv-card reveal" style="transition-delay:.22s">
+          <span class="adv-icon">💰</span>
+          <h4>Precio Competitivo</h4>
+          <p>El producto mantiene un precio accesible frente a otras marcas de cosmética natural, permitiendo llegar a un público más amplio sin sacrificar calidad.</p>
+        </div>
+
+        <div class="adv-card reveal" style="transition-delay:.26s">
+          <span class="adv-icon">✈️</span>
+          <h4>Presentación Innovadora y Práctica</h4>
+          <p>Su formato sólido facilita el transporte, evita derrames y permite un uso más cómodo para el consumidor.</p>
+        </div>
+
+      </div>
+
+      <!-- ── ESTRATEGIAS COMPETITIVAS ── -->
+      <h2 class="s-sub reveal" style="transition-delay:.10s">Estrategias Competitivas</h2>
+
+      <div class="strat-list">
+
+        <div class="strat-item reveal" style="transition-delay:.12s">
+          <div class="strat-num">1</div>
+          <div>
+            <h4>Estrategia de Diferenciación</h4>
+            <p>La empresa busca posicionarse como una marca natural, ecológica y confiable, resaltando los beneficios de la cera de abeja y los ingredientes naturales.</p>
+          </div>
+        </div>
+
+        <div class="strat-item reveal" style="transition-delay:.16s">
+          <div class="strat-num">2</div>
+          <div>
+            <h4>Estrategia Digital</h4>
+            <p>Se utilizarán redes sociales como Instagram, TikTok y Facebook para promocionar el producto, generar reconocimiento de marca e interactuar con clientes potenciales.</p>
+          </div>
+        </div>
+
+        <div class="strat-item reveal" style="transition-delay:.20s">
+          <div class="strat-num">3</div>
+          <div>
+            <h4>Estrategia de Penetración de Mercado</h4>
+            <p>Inicialmente se ofrecerán precios competitivos y promociones de lanzamiento para atraer clientes y ganar participación en el mercado.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="section-divider"/>
+
+      <!-- ══════════════════════════════
+           2.5 COMERCIALIZACIÓN
+      ══════════════════════════════ -->
+      <h2 class="s-sub reveal" style="transition-delay:.08s">Comercialización</h2>
+      <p class="s-intro reveal" style="transition-delay:.12s">La comercialización de BeeSkin Glow estará enfocada en la venta de productos cosméticos naturales dirigidos principalmente a personas interesadas en el cuidado de la piel, bienestar personal y productos ecológicos. La empresa utilizará canales físicos y digitales para llegar a un mayor número de consumidores. Las ventas se realizarán mediante redes sociales, página web, ferias de emprendimiento, tiendas naturales y distribuidores locales. Además, BeeSkin Glow buscará crear una relación cercana con sus clientes ofreciendo asesoría sobre el uso adecuado de los productos y resaltando los beneficios de utilizar cosméticos naturales.</p>
+
+      <!-- 2.5.1 Distribución -->
+      <h3 class="s-sub3 reveal">2.5.1 Distribución</h3>
+      <div class="dist-grid">
+        <div class="dist-card reveal" style="transition-delay:.10s">
+          <h4>Distribución Directa</h4>
+          <ul>
+            <li>Página web</li>
+            <li>Redes sociales</li>
+            <li>WhatsApp Business</li>
+            <li>Ferias y eventos de emprendimiento</li>
+          </ul>
+        </div>
+        <div class="dist-card reveal" style="transition-delay:.14s">
+          <h4>Distribución Indirecta</h4>
+          <ul>
+            <li>Tiendas naturistas</li>
+            <li>Tiendas de cosméticos</li>
+            <li>Emprendimientos aliados</li>
+          </ul>
+        </div>
+        <div class="dist-card reveal" style="transition-delay:.18s">
+          <h4>Cobertura</h4>
+          <ul>
+            <li>Inicialmente en Pereira y el Eje Cafetero</li>
+            <li>Proyección futura hacia otras ciudades de Colombia</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2.5.2 Promoción y Publicidad -->
+      <h3 class="s-sub3 reveal">2.5.2 Promoción y Publicidad</h3>
+      <div class="promo-cols">
+        <div class="promo-block reveal" style="transition-delay:.10s">
+          <h4>Estrategias de Promoción</h4>
+          <ul>
+            <li>Descuentos de lanzamiento</li>
+            <li>Muestras gratis en ferias y eventos</li>
+            <li>Sorteos en redes sociales</li>
+            <li>Descuentos para clientes frecuentes</li>
+            <li>Programas de recomendación</li>
+          </ul>
+        </div>
+        <div class="promo-block reveal" style="transition-delay:.14s">
+          <h4>Estrategias de Publicidad</h4>
+          <ul>
+            <li>Publicidad en Instagram y TikTok</li>
+            <li>Creación de contenido sobre cuidado de la piel</li>
+            <li>Publicaciones con testimonios de clientes</li>
+            <li>Videos mostrando el proceso natural de elaboración</li>
+            <li>Uso de influencers locales y microinfluencers</li>
+            <li>Diseño de piezas gráficas atractivas para redes sociales</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2.5.3 Publicidad (imagen) -->
+      <h3 class="s-sub3 reveal">2.5.3 Publicidad — Diseño</h3>
+      <div class="pub-img-wrap reveal" style="transition-delay:.10s">
+        <img src="publicidad.png" alt="Diseño publicitario BeeSkin Glow"
+             onerror="this.style.display='none'; document.getElementById('pub-ph').style.display='flex'"/>
+        <div class="pub-placeholder" id="pub-ph">
+          <span>🎨</span>
+          <p>publicidad.png</p>
+        </div>
+      </div>
+
+      <!-- 2.5.4 Formas de pago -->
+      <h3 class="s-sub3 reveal">2.5.4 Formas de Pago</h3>
+      <div class="pay-grid reveal" style="transition-delay:.10s">
+        <div class="pay-badge"><span>💵</span> Efectivo</div>
+        <div class="pay-badge"><span>🏦</span> Transferencias bancarias</div>
+        <div class="pay-badge"><span>📱</span> Nequi</div>
+        <div class="pay-badge"><span>📲</span> Daviplata</div>
+        <div class="pay-badge"><span>💳</span> Tarjetas débito y crédito</div>
+        <div class="pay-badge"><span>📷</span> Pagos por código QR</div>
+        <div class="pay-badge"><span>🌐</span> Plataformas digitales de pago</div>
+      </div>
+      <p class="s-intro reveal" style="transition-delay:.14s; margin-top:12px">Esto permitirá mayor comodidad y accesibilidad para los consumidores.</p>
+
+      <!-- 2.5.5 Servicio Postventa -->
+      <h3 class="s-sub3 reveal">2.5.5 Servicio Post Venta</h3>
+      <p class="s-intro reveal" style="transition-delay:.08s">BeeSkin Glow brindará un servicio postventa enfocado en la satisfacción y fidelización del cliente.</p>
+      <div class="postv-list reveal" style="transition-delay:.12s">
+        <div class="postv-item">Atención personalizada después de la compra</div>
+        <div class="postv-item">Seguimiento de satisfacción mediante mensajes o encuestas</div>
+        <div class="postv-item">Respuesta rápida a dudas o inquietudes</div>
+        <div class="postv-item">Garantía por defectos en el producto</div>
+        <div class="postv-item">Recomendaciones sobre uso y conservación</div>
+        <div class="postv-item">Atención a reclamaciones y cambios cuando sea necesario</div>
+        <div class="postv-item">Promociones exclusivas para clientes frecuentes</div>
+      </div>
+      <p class="s-intro reveal" style="transition-delay:.16s; margin-top:12px">El objetivo es generar confianza, fortalecer la relación con el consumidor y aumentar la recompra.</p>
+
+      <hr class="section-divider"/>
+
+      <!-- ══════════════════════════════
+           2.6 MERCADO DE MATERIAS PRIMAS
+      ══════════════════════════════ -->
+      <h2 class="s-sub reveal" style="transition-delay:.08s">Mercado de Materias Primas</h2>
+      <p class="s-intro reveal" style="transition-delay:.12s">Principales proveedores de insumos para la elaboración de los productos BeeSkin Glow.</p>
+
+      <div class="providers-grid">
+
+        <div class="provider-card reveal" style="transition-delay:.12s">
+          <div class="provider-num">1</div>
+          <h4>Apiarios Castañeda S.A.S.</h4>
+          <div class="provider-loc">📍 Cra. 7 # 26-36, Centro, Pereira, Risaralda</div>
+          <p>Produce y comercializa productos apícolas como miel, propóleo, polen, jalea real y cera de abeja. Es beneficioso para la empresa porque suministra ingredientes naturales ideales para cremas, bálsamos y cosmética artesanal.</p>
+        </div>
+
+        <div class="provider-card reveal" style="transition-delay:.18s">
+          <div class="provider-num">2</div>
+          <h4>Oleofinos Colombia S.A.S.</h4>
+          <div class="provider-loc">📍 Calle 76 # 29B-14, Bogotá, Colombia</div>
+          <p>Empresa colombiana dedicada a transformar aceite de palma en materias primas especializadas para cosmética y otras industrias. Beneficia a la empresa porque provee aceites, grasas especiales y oleoquímicos usados en formulaciones cosméticas.</p>
+        </div>
+
+        <div class="provider-card reveal" style="transition-delay:.24s">
+          <div class="provider-num">3</div>
+          <h4>Todo Químicos del Eje — Quindío S.A.S.</h4>
+          <div class="provider-loc">📍 Calle 13 #16-01, Armenia, Quindío</div>
+          <p>Comercializa materias primas para cosmética, jabonería, velas, esencias y productos naturales. Es útil porque ofrece insumos, fragancias, bases y materiales para fabricar productos cosméticos naturales.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div><!-- /inner-page -->
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand-logo">
+          <img src="logo.png" alt="BeeSkin Glow" onerror="this.style.display='none'; document.getElementById('f-fb').style.display='block'"/>
+          <div class="logo-fallback" id="f-fb" style="display:none;font-size:1.4rem"><em>Bee</em>Skin<span style="font-size:.5rem;letter-spacing:5px;color:var(--gold)">GLOW</span></div>
+        </div>
+        <div class="footer-social"><a href="#">📸</a><a href="#">📘</a><a href="#">🎵</a><a href="#">💬</a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <a href="sobre-nosotros.html">Sobre Nosotros</a>
+        <a href="valores.html">Valores Corporativos</a>
+        <a href="equipo.html">Equipo BeeSkin</a>
+        <a href="definicion-negocio.html">Definición del Negocio</a>
+        <a href="mercado.html">Mercado</a>
+        <a href="estrategia.html">Estrategia</a>
+        <a href="dofa.html">DOFA</a>
+        <a href="costos.html">Costos</a>
+      </div>
+      <div class="footer-col"><h4>Legal</h4><a href="privacidad.html">Política de Privacidad</a><a href="terminos.html">Términos y Condiciones</a></div>
+      <div class="footer-col"><h4>Contacto</h4><a href="mailto:hola@beeskinglow.com">hola@beeskinglow.com</a><a href="tel:+573000000000">+57 300 000 0000</a><span>Colombia 🇨🇴</span></div>
+    </div>
+    <div class="footer-bottom">© 2026 BeeSkin Glow. Todos los derechos reservados.</div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
